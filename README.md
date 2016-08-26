@@ -1,5 +1,6 @@
 
-# NGP Portal GoCD
+# Infrastructure as code for GoCD
+ Simple GoCD stack infrastructure code. (1 go-server, 2 go-agents)
 
 ## Dependencies
  - vagrant (>=1.8.1)
@@ -7,7 +8,12 @@
 
 ## Usage
 
+### Create GoCD Stack
 ``` bash
-# Create GoCD Stack (1 server, 2 agents)
 $ ./bootstrap.sh
+```
+
+### Teardown
+``` bash
+$ vagrant destroy -f
 ```
