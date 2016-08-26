@@ -7,11 +7,11 @@
   become: yes
 
   tasks:
-    - name: download {{ pkg_path }}
-      copy: src={{ pkg_path }} dest=/tmp/{{ pkg_path }}
+    - name: download {{ pkg_go_agent }}
+      copy: src={{ pkg_go_agent }} dest=/tmp/{{ pkg_go_agent }}
 
-    - name: install {{ pkg_path }}
-      apt: deb=/tmp/{{ pkg_path }}
+    - name: install {{ pkg_go_agent }}
+      apt: deb=/tmp/{{ pkg_go_agent }}
 
     - name: debug {{ gocd_server_ip }}
       debug: msg={{ gocd_server_ip }}

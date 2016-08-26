@@ -7,9 +7,9 @@
   become: yes
 
   tasks:
-    - name: download {{ pkg_path }}
-      copy: src={{ pkg_path }} dest=/tmp/{{ pkg_path }}
+    - name: download {{ pkg_go_server }}
+      copy: src={{ pkg_go_server }} dest=/tmp/{{ pkg_go_server }}
 
-    - name: install {{ pkg_path }}
-      apt: deb=/tmp/{{ pkg_path }}
+    - name: install {{ pkg_go_server }}
+      apt: deb=/tmp/{{ pkg_go_server }}
 
