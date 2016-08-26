@@ -7,7 +7,7 @@
   become: yes
 
   tasks:
-    - name: download gocd_agent .deb
+    - name: download {{ pkg_path }}
       copy: src={{ pkg_path }} dest=/tmp/{{ pkg_path }}
 
     - name: install {{ pkg_path }}

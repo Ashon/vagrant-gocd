@@ -2,8 +2,8 @@
 # NGP Portal GoCD
 
 ## Dependencies
- - vagrant
- - ansible
+ - vagrant (>=1.8.1)
+ - ansible (>=2.0.2.0)
 
 ## Usage
 
