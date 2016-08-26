@@ -1,0 +1,6 @@
+---
+- name: ping to hosts
+  hosts: gocd_group
+  tasks:
+    - name: ping
+      action: ping

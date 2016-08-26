@@ -1,0 +1,4 @@
+---
+- include: infrastructure.yml
+- include: gocd_server.yml
+- include: gocd_agents.yml

@@ -1,0 +1,17 @@
+---
+- name: ping to gocd agents
+
+  hosts:
+    - gocd_agents
+
+  become: yes
+
+  tasks:
+    - name: download gocd_agent .deb
+      copy: src={{ pkg_path }} dest=/tmp/{{ pkg_path }}
+
+    - name: install {{ pkg_path }}
+      apt: deb=/tmp/{{ pkg_path }}
+
+    - name: debug {{ gocd_server_ip }}
+      debug: msg={{ gocd_server_ip }}

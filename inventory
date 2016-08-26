@@ -1,0 +1,34 @@
+# vagrant inventory
+gocd_server-ubuntu ansible_ssh_host=192.168.22.10 ansible_ssh_private_key_file=.vagrant/machines/gocd_server/virtualbox/private_key
+gocd_agent-ubuntu-1 ansible_ssh_host=192.168.22.11 ansible_ssh_private_key_file=.vagrant/machines/gocd_agent-ubuntu-1/virtualbox/private_key
+gocd_agent-ubuntu-2 ansible_ssh_host=192.168.22.12 ansible_ssh_private_key_file=.vagrant/machines/gocd_agent-ubuntu-2/virtualbox/private_key
+
+
+# define gocd server
+[gocd_server]
+gocd_server-ubuntu
+
+[gocd_server:vars]
+pkg_path=go-server_16.8.0-3929_all.deb
+
+# define gocd agents
+[gocd_agents]
+gocd_agent-ubuntu-[1:2]
+
+[gocd_agents:vars]
+pkg_path=go-agent_16.8.0-3929_all.deb
+gocd_server_ip={{ hostvars['gocd_server-ubuntu'].ansible_ssh_host }}
+
+
+# define gocd group
+[gocd_group:children]
+gocd_server
+gocd_agents
+
+
+[gocd_ubuntu]
+gocd_server-ubuntu
+gocd_agent-ubuntu-[1:2]
+
+[gocd_ubuntu:vars]
+ansible_ssh_user=vagrant

@@ -1,0 +1,17 @@
+---
+- name: setup infrastructure
+
+  hosts:
+    - gocd_ubuntu
+
+  become: yes
+
+  tasks:
+    - name: Update cert index
+      shell: /usr/sbin/update-ca-certificates
+
+    - name: install jdk
+      apt: name=openjdk-7-jre-headless
+
+    - name: install git
+      apt: name=git

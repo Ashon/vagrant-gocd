@@ -1,0 +1,15 @@
+---
+- name: ping to gocd server
+
+  hosts:
+    - gocd_server
+
+  become: yes
+
+  tasks:
+    - name: download gocd-server .deb
+      copy: src={{ pkg_path }} dest=/tmp/{{ pkg_path }}
+
+    - name: install {{ pkg_path }}
+      apt: deb=/tmp/{{ pkg_path }}
+
