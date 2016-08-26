@@ -7,7 +7,7 @@
   become: yes
 
   tasks:
-    - name: download {{ pkg_go_server }}
+    - name: copy {{ pkg_go_server }}
       copy: src={{ pkg_go_server }} dest=/tmp/{{ pkg_go_server }}
 
     - name: install {{ pkg_go_server }}

@@ -7,11 +7,14 @@
   become: yes
 
   tasks:
-    - name: download {{ pkg_go_agent }}
+    - name: copy {{ pkg_go_agent }}
       copy: src={{ pkg_go_agent }} dest=/tmp/{{ pkg_go_agent }}
 
     - name: install {{ pkg_go_agent }}
       apt: deb=/tmp/{{ pkg_go_agent }}
 
-    - name: debug {{ gocd_server_ip }}
-      debug: msg={{ gocd_server_ip }}
+    - name: change gocd_server url to {{ gocd_server_ip }}
+      template: src=go-agent.j2 dest=/etc/default/go-agent
+
+    - name: restart gocd_agent
+      service: name=go-agent state=restarted
