@@ -15,5 +15,5 @@ $ ./bootstrap.sh
 
 ### Teardown
 ``` bash
-$ vagrant destroy -f
+$ ./teardown.sh
 ```
